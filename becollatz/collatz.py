@@ -1,7 +1,8 @@
 from typing import List
 
 
-def compute_numbers(number:int) -> List[int]:
+# computes all numbers in the collatz series for the given number
+def compute_numbers(number: int) -> List[int]:
     numbers = [number]
     while number != 1:
         if number % 2 == 1:

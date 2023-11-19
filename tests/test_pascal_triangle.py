@@ -13,10 +13,8 @@ class TestTriangle(unittest.TestCase):
         self.assertEqual(r[4], [1, 4, 6, 4, 1])
         self.assertEqual(r[5], [1, 5, 10, 10, 5, 1])
         self.assertEqual(r[6], [1, 6, 15, 20, 15, 6, 1])
+
     def test_row_sum(self):
         r = triangle_gen(5)
         for i in range(0, len(r)):
             self.assertEqual(sum(r[i]), row_sum(i))
-
-
-

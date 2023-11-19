@@ -1,9 +1,45 @@
 from becollatz.collatz import compute_numbers
 import sys
 
-if len(sys.argv) != 2:
-    print("You must provide a single number")
-    exit()
+# if len(sys.argv) != 2:
+#     print("You must provide a single number")
+#     exit()
+
+def convert_to_integer(str_value: str) -> int:
+     try:
+         if str_value.startswith("0b"):
+            return int(str_value, 2)
+         return int(str_value)
+     except ValueError as e:
+        print(f"The str doesn't contain all integers, it contains {str_value}")
+        # raise e
+        exit(1)
+
+
+arguments = []
+i = 1
+while i < len(sys.argv):
+    arg = sys.argv[i]
+    if "-" in arg:
+        first, second = arg.split("-")
+        arguments.append((convert_to_integer(first), convert_to_integer(second)))
+    else:
+        arguments.append(convert_to_integer(arg))
+    i += 1
+
+print(arguments)
+
+sys.exit(1)
+
+
+
+
+
+
+
+
+
+
 
 try:
     number = int(sys.argv[1])
