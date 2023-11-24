@@ -1,5 +1,6 @@
 from becollatz.collatz import compute_numbers
 import sys
+import matplotlib.pyplot as plt
 
 # if len(sys.argv) != 2:
 #     print("You must provide a single number")
@@ -19,11 +20,13 @@ def convert_to_integer(str_value: str) -> int:
 def print_collatz_numbers(number: int):
     print(f"You provided {number} as input")
     result = compute_numbers(number)
+    print("HGere")
     index = 0
     for n in result:
         print(f"Step {index:4} {n:10}")
         index += 1
     print(f"Total number of steps till we reached 1: {len(result) - 1} steps")
+    return len(result)
 
 
 
@@ -47,15 +50,17 @@ def get_arguments():
 
 
 args = get_arguments()
+arguments = []
 for arg in args:
     if type(arg) == tuple:  # if isinstance(arg, tuple):
         arg1, arg2 = arg
         print(arg1, arg2)
         for i in range(arg1, arg2 + 1):
             print_collatz_numbers(i)
+            arguments.append(print_collatz_numbers(i))
     else:
         print_collatz_numbers(arg)
-
+        arguments.append(print_collatz_numbers(arg))
 
 sys.exit(1)
 
