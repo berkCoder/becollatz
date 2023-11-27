@@ -1,10 +1,6 @@
 from becollatz.collatz import compute_numbers
 import sys
-import matplotlib.pyplot as plt
 
-# if len(sys.argv) != 2:
-#     print("You must provide a single number")
-#     exit()
 
 def convert_to_integer(str_value: str) -> int:
      try:
@@ -29,7 +25,6 @@ def print_collatz_numbers(number: int):
     return len(result)
 
 
-
 def get_arguments():
     arguments = []
     i = 1
@@ -50,19 +45,12 @@ def get_arguments():
 
 
 args = get_arguments()
-arguments = []
 for arg in args:
     if type(arg) == tuple:  # if isinstance(arg, tuple):
         arg1, arg2 = arg
-        print(arg1, arg2)
         for i in range(arg1, arg2 + 1):
             print_collatz_numbers(i)
-            arguments.append(print_collatz_numbers(i))
     else:
         print_collatz_numbers(arg)
-        arguments.append(print_collatz_numbers(arg))
-
-sys.exit(1)
-
 
 

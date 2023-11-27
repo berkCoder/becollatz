@@ -13,9 +13,24 @@ def compute_numbers(number: int) -> List[int]:
     return numbers
 
 
+class Series:
+    def __init__(self, number: int):
+        self._numbers = compute_numbers(number)
+        self._odd_numbers = []
+        for item in self._numbers:
+            if item % 2 == 1:
+                self._odd_numbers.append(item)
 
+    def __len__(self):
+        return len(self._numbers)
 
+    def __getitem__(self, item):
+        return self._numbers[item]
 
+    @property
+    def even_count(self):
+        return len(self._numbers) - len(self._odd_numbers)
 
-
-
+    @property
+    def odd_count(self):
+        return len(self._odd_numbers)
